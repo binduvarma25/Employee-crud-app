@@ -1,1 +1,55 @@
-<p>add-employee works!</p>
+
+
+<form [formGroup]="employeeForm"  (ngSubmit)="onSubmit()">
+
+    <h2>Employee Details</h2>
+    <div>
+        <label for="name">Name: </label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div *ngIf="employeeForm.controls['name'].invalid && (employeeForm.controls['name'].dirty || employeeForm.controls['name'].touched)" class="alert">
+        <div *ngIf="employeeForm.controls['name'].errors">
+        Please enter Name
+      </div>
+    </div>
+    <br/><br/>
+    <div>
+        <label for="email">Email: </label>
+        <input id="email" type="text" formControlName="email">
+
+    </div>
+
+    <div *ngIf="employeeForm.controls['email'].invalid && (employeeForm.controls['email'].dirty || employeeForm.controls['email'].touched)" class="alert">
+        <div *ngIf="employeeForm.controls['email'].errors">
+        Please enter Email
+      </div>
+    </div>
+    <br/><br/>
+
+    <div>
+        <label for="role">Role: </label>
+        <input id="role" type="text" formControlName="role">
+    </div>
+
+    <div *ngIf="employeeForm.controls['role'].invalid && (employeeForm.controls['role'].dirty || employeeForm.controls['role'].touched)" class="alert">
+        <div *ngIf="employeeForm.controls['role'].errors">
+        Please enter Role
+      </div>
+    </div>
+    <br/><br/>
+    <div>
+        <label for="salary">Salary: </label>
+        <input id="salary" type="text" formControlName="salary">
+    </div>
+
+    <div *ngIf="employeeForm.controls['salary'].invalid && (employeeForm.controls['salary'].dirty || employeeForm.controls['salary'].touched)" class="alert">
+        <div *ngIf="employeeForm.controls['salary'].errors">
+        Please enter Salary
+      </div>
+    </div>
+    <br/><br/>
+
+    <button type="submit" [disabled]="!employeeForm.valid" class="btn btn-primary" >Submit</button>
+
+</form>

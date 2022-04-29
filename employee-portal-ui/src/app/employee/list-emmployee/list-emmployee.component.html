@@ -1,39 +1,41 @@
 <style>
-    .table{
+    .table {
         border: 1px solid;
     }
 
-    .td{
+    .td {
         border: 1px solid;
     }
 
-    .th{
+    .th {
         border: 1px solid;
     }
 </style>
 
 <p>Employee List</p>
+<thead>
+    <tr>
+
+        <th class="th">Name</th>
+        <th class="th">Email</th>
+        <th class="th">Salary</th>
+        <th class="th">Role</th>
+
+    </tr>
+</thead>
 
 
+<div *ngFor="let data of empList">
+    <table class="table">
 
-    <div *ngFor="let data of empList">
-        <table class="table">
-            <thead>
-                <tr>
+        <tbody>
+            <tr>
+                <td class="td">{{data.name}}</td>
+                <td class="td">{{data.email}}</td>
+                <td class="td">{{data.salary}}</td>
+                <td class="td">{{data.role}}</td>
 
-                    <th class="th">Name</th>
-                    <th class="th">Email</th>
-                    <th class="th">Salary</th>
+            </tr>
+        </tbody>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="td">{{data.name}}</td>
-                    <td class="td">{{data.email}}</td>
-                    <td class="td">{{data.salary}}</td>
-
-                </tr>
-            </tbody>
-
-        </table>
+    </table>
