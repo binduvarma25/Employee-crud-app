@@ -21,8 +21,10 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Employee employee, Integer id) throws ObjectNotFound {
-        if (this.getEmployee(id).isPresent()) {
+        Optional<Employee> optionalEmployee = this.getEmployee(id);
+        if (optionalEmployee.isPresent()) {
             employee.setId(id);
+            employee.setCreatedDate(optionalEmployee.get().getCreatedDate());
             return this.employeeRepository.save(employee);
         }
         throw new ObjectNotFound(Employee.class.getName());
