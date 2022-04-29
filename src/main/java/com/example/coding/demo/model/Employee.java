@@ -1,5 +1,6 @@
 package com.example.coding.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -27,8 +28,11 @@ public class Employee {
     private String role;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date createdDate;
+    
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date modifiedDate;
 
     @PrePersist
