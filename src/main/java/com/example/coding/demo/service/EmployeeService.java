@@ -2,6 +2,7 @@ package com.example.coding.demo.service;
 
 import com.example.coding.demo.model.Employee;
 import com.example.coding.demo.repo.EmployeeRepository;
+import com.example.coding.demo.util.ObjectNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,15 @@ public class EmployeeService {
         return this.employeeRepository.save(employee);
     }
 
+    public Employee updateEmployee(Employee employee, Integer id) throws ObjectNotFound {
+        if (this.getEmployee(id).isPresent()) {
+            employee.setId(id);
+            return this.employeeRepository.save(employee);
+        }
+        throw new ObjectNotFound(Employee.class.getName());
+    }
+
+
     public Optional<Employee> getEmployee(Integer id) {
         return this.employeeRepository.findById(id);
     }
@@ -27,9 +37,6 @@ public class EmployeeService {
         return this.employeeRepository.findAll();
     }
 
-    public Employee updateEmployee(Employee emp, Integer id) {
-        return emp;
-    }
 
     public void deleteEmployee(Integer id) {
         this.employeeRepository.deleteById(id);

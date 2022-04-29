@@ -2,6 +2,7 @@ package com.example.coding.demo.api;
 
 import com.example.coding.demo.model.Employee;
 import com.example.coding.demo.service.EmployeeService;
+import com.example.coding.demo.util.ObjectNotFound;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -43,10 +44,8 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody @Valid Employee employee, @PathVariable Integer id) {
-        if (this.employeeService.getEmployee(id).isPresent())
-            return new ResponseEntity<>(this.employeeService.saveEmployee(employee), HttpStatus.OK);
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Employee> updateEmployee(@RequestBody @Valid Employee employee, @PathVariable Integer id) throws ObjectNotFound {
+        return new ResponseEntity<>(this.employeeService.updateEmployee(employee, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -61,5 +60,10 @@ public class EmployeeController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>("Employee does not exist with the id:" + id, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ObjectNotFound.class)
+    public ResponseEntity<String> handleObjectNotFound(ObjectNotFound objectNotFound) {
+        return new ResponseEntity(objectNotFound.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
