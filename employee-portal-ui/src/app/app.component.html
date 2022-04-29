@@ -2,8 +2,10 @@
 
 
 <!-- Toolbar -->
-<div>
-  <app-add-employee></app-add-employee>
-  <app-list-emmployee></app-list-emmployee>
-</div>
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/add">Add Employee</a>
+  <br/>
+  <a routerLink="/list">List mployees</a>
+</nav>
 <router-outlet></router-outlet>
