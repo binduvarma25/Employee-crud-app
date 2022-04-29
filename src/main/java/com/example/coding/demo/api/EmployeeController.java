@@ -18,6 +18,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/employee")
 @Tag(name = "Employee Controller", description = "this would provide the means to operate on employee domain object")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
