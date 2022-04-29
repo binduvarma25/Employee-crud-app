@@ -1,49 +1,54 @@
+<style>
+    .warn {
+       color: red;
+}
+</style>
 
-
+    <div class="col-md-4 m-5 pb-5">
 <form [formGroup]="employeeForm"  (ngSubmit)="onSubmit()">
 
     <h2>Employee Details</h2>
-    <div>
+    <div class="form-group">
         <label for="name">Name: </label>
-        <input id="name" type="text" formControlName="name">
+        <input id="name" type="text" class="form-control" formControlName="name">
     </div>
 
-    <div *ngIf="employeeForm.controls['name'].invalid && (employeeForm.controls['name'].dirty || employeeForm.controls['name'].touched)" class="alert">
+    <div class="warn" *ngIf="employeeForm.controls['name'].invalid && (employeeForm.controls['name'].dirty || employeeForm.controls['name'].touched)">
         <div *ngIf="employeeForm.controls['name'].errors">
         Please enter Name
       </div>
     </div>
     <br/><br/>
-    <div>
+    <div class="form-group"> 
         <label for="email">Email: </label>
-        <input id="email" type="text" formControlName="email">
+        <input id="email" type="text" class="form-control" formControlName="email">
 
     </div>
 
-    <div *ngIf="employeeForm.controls['email'].invalid && (employeeForm.controls['email'].dirty || employeeForm.controls['email'].touched)" class="alert">
+    <div  class="warn" *ngIf="employeeForm.controls['email'].invalid && (employeeForm.controls['email'].dirty || employeeForm.controls['email'].touched)">
         <div *ngIf="employeeForm.controls['email'].errors">
         Please enter Email
       </div>
     </div>
     <br/><br/>
 
-    <div>
+    <div class="form-group">
         <label for="role">Role: </label>
-        <input id="role" type="text" formControlName="role">
+        <input id="role" type="text" class="form-control" formControlName="role">
     </div>
 
-    <div *ngIf="employeeForm.controls['role'].invalid && (employeeForm.controls['role'].dirty || employeeForm.controls['role'].touched)" class="alert">
+    <div class="warn" *ngIf="employeeForm.controls['role'].invalid && (employeeForm.controls['role'].dirty || employeeForm.controls['role'].touched)" >
         <div *ngIf="employeeForm.controls['role'].errors">
         Please enter Role
       </div>
     </div>
     <br/><br/>
-    <div>
+    <div class="form-group">
         <label for="salary">Salary: </label>
-        <input id="salary" type="text" formControlName="salary">
+        <input id="salary" type="text" class="form-control" formControlName="salary">
     </div>
 
-    <div *ngIf="employeeForm.controls['salary'].invalid && (employeeForm.controls['salary'].dirty || employeeForm.controls['salary'].touched)" class="alert">
+    <div  class="warn" *ngIf="employeeForm.controls['salary'].invalid && (employeeForm.controls['salary'].dirty || employeeForm.controls['salary'].touched)" >
         <div *ngIf="employeeForm.controls['salary'].errors">
         Please enter Salary
       </div>
@@ -53,3 +58,5 @@
     <button type="submit" [disabled]="!employeeForm.valid" class="btn btn-primary" >Submit</button>
 
 </form>
+
+</div>
