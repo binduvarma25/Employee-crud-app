@@ -11,7 +11,7 @@ public class SwaggerConfigOpenAPI3 {
     @Bean
     public OpenAPI buildOpenAPISpec() {
         return new OpenAPI()
-                .info(new Info().title("demo Crud APP API")
+                .info(new Info().title("Demo Crud APP API")
                         .description("Spring Crud Demo App")
                         .version("1.0.0-SNAPSHOT"));
     }

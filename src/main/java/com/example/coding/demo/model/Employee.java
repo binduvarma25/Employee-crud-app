@@ -13,14 +13,17 @@ public class Employee {
 
     @Id
     @GeneratedValue
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer id;
     @NotBlank
     private String name;
     @NotBlank
     @Email
     private String email;
-    @NotBlank
+
+    @Min(1000)
     private double salary;
+
     @PastOrPresent
     @Temporal(TemporalType.DATE)
     private Date joiningDate;
@@ -30,7 +33,7 @@ public class Employee {
     @Temporal(TemporalType.TIMESTAMP)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date createdDate;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date modifiedDate;
